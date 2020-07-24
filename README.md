@@ -1,6 +1,7 @@
 # CryoFilter
 
 ## Problem Specification
+
 What do the top ten most commonly prescribed medications, including treatments for hyperthyroidism, asthma, heart disease, and ADHD all have in common? They all target membrane proteins. In fact, despite membrane proteins making up only a third of proteins in the human body, over half of all medications target them including treatments currently in development for COVID-19. However, the structural and functional mechanisms of many of these proteins remains a mystery making the effective development of new medicines highly wasteful and difficult.
 
 In 2017 the Nobel Prize in chemistry was awarded to Jacques Dubochet, Joachim Frank and Richard Henderson for their contributions to the development of cryo-electron microscopy, a technique that has led to a revolution in finding structures of membrane proteins by allowing researchers to capture 2D images of individual molecules and use these to create high resolution 3D models. These high resolution 3D models can then be used as the basis for a computational drug discovery platform. But despite these advances, building a high quality model of a membrane protein is not a trivial task.
@@ -17,5 +18,17 @@ This is where ‘CryoFilter’ will come in. We envisage a machine learning base
 Extensions
 
 - Image deionising?
-- Particle picking (segmentation) eg. fasterRCNN on top of the classifiers.
+- Particle localisation (segmentation) eg. fasterRCNN on top of the classifiers.
 - Can we use the class averages to inform the the classifiers. Might find more about this during the EDA.
+
+## Data
+
+Sample data we are using:
+https://drive.google.com/drive/folders/1-9g48x00LE8LZasuwgcjnztHRyHhQ_QJ?usp=sharing
+
+Taken from this dataset:
+https://www.ebi.ac.uk/pdbe/emdb/empiar/entry/10059/
+
+## Useful links
+
+https://sphire.mpg.de/wiki/doku.php?id=pipeline:window:cryolo
