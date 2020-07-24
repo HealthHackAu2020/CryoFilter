@@ -37,9 +37,9 @@ https://sphire.mpg.de/wiki/doku.php?id=pipeline:window:cryolo
 https://www.biorxiv.org/content/10.1101/838920v1.full
 
 ## Team Members
-Gavin Rice
-Simon Thomas
-Henry Orton
-Mahasen Sooriyabandra
-Prithvi Reddy
-Issac Tucker
+- Gavin Rice
+- Simon Thomas
+- Henry Orton
+- Mahasen Sooriyabandra
+- Prithvi Reddy
+- Issac Tucker
