@@ -16,7 +16,7 @@ This is where ‘CryoFilter’ will come in. We envisage a machine learning base
 Day 1, Fri
 
 - Regarding crYOLO, it doesn't really make sense to use YOLO on this problem. It will do a bad job when the anchor boxes overlap.
-- We could just do some naive classification.
+- We could just do some naive classification. Probably going to be garbage, but may aswell try.
 - We could do some feature engineering. First step PCA, looking at class averages, etc. Later maybe deep-learning methods (VAE).
 - We can work on models separately then ensemble the results at the end.
 
@@ -34,6 +34,19 @@ Day 2, Sat
   ![pca](https://github.com/HealthHackAu2020/CryoFilter/blob/master/figures/pca_plot_squared.png?raw=true)
 
 - Now we just need to figure out the decision boundary to do classification.
+- Tried clustering. See if its possible to discriminate in an unsupervised way. No dice, 50/50 labeling accuracy.
+
+Day 2, Sat Evening
+- Ensemble of a roberts filter + conv net the PCA method we get an AUC 0.8!
+
+Next Ideas, not in any particular order:
+- Swap GBM for a NN predictor for the PCA feature. Can build PCA with full dataset.
+- Revisit VAE. Can we use the full dataset for VAE.
+- Try embedding the PCA before the linear layer of the conv net. imag -> conv then conv+pca to linear.
+- We need need to reconsider where we want to be on the ROC curve, in this problem we care a lot more about true positives than anything else. Eg. 3mil picked images, need 400k samples to make 3d images, its best to have high quality particles rather than lots of particles.
+- Our accuracy is could better than we think, the data we are using to test is from a preprocessed subset of the raw data. The original dataset will have many more bad images. So if we look at the original dataset (and our tn doesn't change) we should have much higher accuracy. It is possible that the tn rate could go up because there could be 'bad' particle types that our classifier will not have seen before. (Related question: How would we go about training the model if we don't have preprocessed micrographs?)
+- Go back to the original start of their processing pipeline, get raw data from the autopicker.
+- We haven't done any Data augmentation. This should get us even better results.
 
 
 - Using a [roberts filter](http://man.hubwiz.com/docset/Scikit-image.docset/Contents/Resources/Documents/api/skimage.filters.html#skimage.filters.roberts) on the
