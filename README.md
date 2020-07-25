@@ -9,10 +9,25 @@ In 2017 the Nobel Prize in chemistry was awarded to Jacques Dubochet, Joachim Fr
 All datasets have anomalies, in cryo-electron microscopy data these come in the form of broken particles. One key challenge in the analysis workflow is sorting high quality 2D images from images of broken particles or other false positives. Current platforms use a maximum likelihood approach to 2D classification that groups similar looking images into classes that can then be manually determined to be good, and used in further analysis, or bad and removed from the dataset. While useful on a very large scale, this method takes a significant amount of time and worse, it never truly removes all the bad images and just a few bad images in a dataset of thousands of particles can significantly hamper high quality 3D reconstruction.
 This is where ‘CryoFilter’ will come in. We envisage a machine learning based software tool that can automatically detect and remove bad particles from the datasets, leaving only the good particles to rapidly create the 3D high resolution structure of the membrane protein. CryoFilter will integrate seamlessly into existing workflows while removing the crucial step of manual sorting. Once in use, CryoFilter will save biomedical researchers in hundreds of groups around the world weeks to months of time which they now spend manually selecting images, significantly speeding up the discovery time.
 
+## Discussion notes
+Day 1, Fri
+- Regarding crYOLO, it doesn't really make sense to use YOLO on this problem. It will do a bad job when the anchor boxes overlap.
+- We could just do some naive classification. 
+- We could do some feature engineering. First step PCA, looking at class averages, etc. Later maybe deep-learning methods (VAE).
+- We can work on models separately then ensemble the results at the end.
+
+Day 2, Sat
+- PCA is not enough, the variance explained by the best components is small. But the actual components show disk-like features in the center. 
+- Mahasen thinks that the spatial spectrum of the images might be informative.
+
+## Approach
+
+
 ## TODO
 
 - Exploratory data analysis of the image. See if we can construct features that tell us anything useful. Maybe these can be used as inputs to the classifiers.
 - Develop classifiers to distinguish 'good' (two classes top and side) and 'bad' particles.
+- Train a VAE on the 'good` images.
 - If we develop multiple classifiers we can ensemble them.
 
 Extensions
@@ -36,9 +51,13 @@ Current deep-learning methods:
 https://sphire.mpg.de/wiki/doku.php?id=pipeline:window:cryolo
 https://www.biorxiv.org/content/10.1101/838920v1.full
 
+Availability:
+https://docs.google.com/spreadsheets/d/1IBo6jAY8HO5a3b39HDeOO_1z1Blqu9jN21SIKq2kv3c/edit?usp=sharing
+
 ## Team Members
 - Gavin Rice
 - Simon Thomas
+- George Li
 - Henry Orton
 - Mahasen Sooriyabandra
 - Prithvi Reddy
