@@ -35,6 +35,13 @@ Day 2, Sat
 
 - Now we just need to figure out the decision boundary to do classification.
 
+
+- Using a [roberts filter](http://man.hubwiz.com/docset/Scikit-image.docset/Contents/Resources/Documents/api/skimage.filters.html#skimage.filters.roberts) on the
+positive and negative classes, a naive CNN achieves a validation accurcy of approximately 75%. If we can cannot beat this brain dead benchmark, then we are doomed.
+![Base Classifcation](https://github.com/HealthHackAu2020/CryoFilter/blob/master/figures/pca_plot_squared.png?raw=true)
+
+- VAE appears to be learning the average image for both classes, with the majority of noise in both sets being on the periferal regions of the image. Performs worse than a PCA at this stage. Need to consider a better way to partition the classes.
+
 ## Approach
 
 ## TODO
