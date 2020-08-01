@@ -36,6 +36,12 @@ Day 2, Sat
 - Now we just need to figure out the decision boundary to do classification.
 - Tried clustering. See if its possible to discriminate in an unsupervised way. No dice, 50/50 labeling accuracy.
 
+- Using a [roberts filter](http://man.hubwiz.com/docset/Scikit-image.docset/Contents/Resources/Documents/api/skimage.filters.html#skimage.filters.roberts) on the
+positive and negative classes, a naive CNN achieves a validation accurcy of approximately 75%. If we can cannot beat this brain dead benchmark, then we are doomed.
+![Base Classifcation](https://github.com/HealthHackAu2020/CryoFilter/blob/master/figures/roberts_filter_classifcation.png?raw=true)
+
+- VAE appears to be learning the average image for both classes, with the majority of noise in both sets being on the periferal regions of the image. Performs worse than a PCA at this stage. Need to consider a better way to partition the classes. 
+
 Day 2, Sat Evening
 - Ensemble of a roberts filter + conv net the PCA method we get an AUC 0.8!
 
@@ -49,11 +55,11 @@ Next Ideas, not in any particular order:
 - We haven't done any Data augmentation. This should get us even better results.
 
 
-- Using a [roberts filter](http://man.hubwiz.com/docset/Scikit-image.docset/Contents/Resources/Documents/api/skimage.filters.html#skimage.filters.roberts) on the
-positive and negative classes, a naive CNN achieves a validation accurcy of approximately 75%. If we can cannot beat this brain dead benchmark, then we are doomed.
-![Base Classifcation](https://github.com/HealthHackAu2020/CryoFilter/blob/master/figures/roberts_filter_classifcation.png?raw=true)
-
-- VAE appears to be learning the average image for both classes, with the majority of noise in both sets being on the periferal regions of the image. Performs worse than a PCA at this stage. Need to consider a better way to partition the classes.
+Day 3, Sun
+- Trainable Weka?
+- Are there any TL backbones that we could apply to this type of model?
+- If we do as well as the current detection method but are quicker, then we have won. So maybe we can use the current method as labelled data?
+- Can we train a backbone using a lot of labelled data (from existing pickers/classifiers) related to this problem, then retrain a head for each particular macro-molecule.
 
 ## Approach
 
