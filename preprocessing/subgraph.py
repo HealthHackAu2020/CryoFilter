@@ -69,7 +69,7 @@ class SubgraphLoader():
                     subgraph_particles = np.array(
                         list(
                             filter(
-                                lambda x : inRect(x, (idxh, idxw), dimH, dimW), 
+                                lambda x : self.boxContains(x, (idxh, idxw), dimH, dimW), 
                                 self.particles[micrograph]
                             )
                         )
